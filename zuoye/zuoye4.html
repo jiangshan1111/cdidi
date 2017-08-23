@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+		<style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .carousel {
+      width: 780px;
+      height: 350px;
+      margin: 50px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .carousel ul {
+      list-style: none;
+    }
+    .carousel ul li {
+      display: none;
+    }
+    .carousel ul li.current {
+      display: block;
+    }
+    .carousel span {
+      position: absolute;
+      width: 55px;
+      height: 55px;
+      top: 130px;
+      cursor: pointer;
+    }
+    .carousel .leftBtn {
+      left: 10px;
+    }
+    .carousel .rightBtn {
+      right: 10px;
+    }
+    .carousel .circles {
+      position: absolute;
+      bottom: 0px;
+      width: 200px;
+      height: 17px;
+      left: 50%;
+      margin-left: -50px;
+    }
+    .carousel .circles ol {
+      list-style: none;
+    }
+    .carousel .circles ol li {
+      float: left;
+      width: 17px;
+      height: 17px;
+      margin-right: 13px;
+      background-color: gold;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .carousel .circles ol li.currnt {
+      background-color: purple;
+    }
+  </style>
+	</head>
+	<body>
+		<div class="carousel">
+    <div class="imagesList" id="imagesList">
+      <ul>
+        <li class="current"> <a href=""> <img src="banner1.png" alt=""> </a> </li>
+        <li> <a href=""> <img src="banner2.png" alt=""> </a> </li>
+        <li> <a href=""> <img src="banner3.jpg" alt=""> </a> </li>
+        <li> <a href=""> <img src="banner4.jpg" alt=""> </a> </li>
+      </ul>
+    </div>
+    <div class="btns">
+      <span class="leftBtn" id="carousel_leftBtn">左</span>
+      <span class="rightBtn" id="carousel_rightBtn">右</span>
+    </div>
+    <div class="circles" id="circles">
+      <ol>
+        <li class="currnt"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ol>
+    </div>
+  </div>
+	</body>
+	<script type="text/javascript">
+		var index=0;
+		var oli=document.getElementById("circles").getElementsByTagName("li");console.log(oli)
+		oimgs=document.getElementsByTagName("img");
+		obtnright=document.getElementById("carousel_rightBtn");
+		obtnleft=document.getElementById("carousel_leftBtn");
+		obtnright.onclick=function(){
+			index++;
+			if (index>3) {
+				index=0;
+			}
+			donhqilai()
+		}
+		obtnleft.onclick=function(){
+			index--;
+			if (index<=0) {
+				index=3;
+			}
+			donhqilai()
+		}
+		 for (var i = 0; i <oli.length; i++) {
+      (function(i){
+        oli[i].onmouseover = function() {
+          index = i;
+        donhqilai();
+        }
+      })(i);
+    }
+		function donhqilai(){
+			for (var i=0;i<oimgs.length;i++) {
+				oimgs[i].parentElement.parentElement.className="";
+				oli[i].className="";
+			}
+			oimgs[index].parentElement.parentElement.className="current";
+			oli[index].className="currnt";
+		}
+	</script>
+</html>

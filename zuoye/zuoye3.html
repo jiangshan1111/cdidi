@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#Box{
+				height: 200px;
+				width:300px;
+				padding-left:20px ;
+				padding-top: 40px;
+			}
+			span{
+				display: inline-block;
+				width: 30px;
+			}
+			#Box>div{
+				height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="Box">
+			<div>
+				<span>r:</span><button>-</button>
+				<input type="text"value="111" class="gg" />
+				<button>+</button>
+			</div>
+			<div>
+				<span>g:</span><button>-</button>
+				<input type="text"value="111" class="gg" />
+				<button>+</button>
+			</div>
+			<div>
+				<span>b:</span><button>-</button>
+				<input type="text"value="111" class="gg"/>
+				<button>+</button>
+			</div>
+			<div>
+				<button>
+					go
+				</button>
+				<p>input框内请输入0~255的数字</p>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var ovalue=document.getElementsByClassName("gg");
+		var odiv=document.getElementById("Box");
+		var obtn=document.getElementsByTagName("button");
+		odiv.style.background="rgb("+parseInt(ovalue[0].value)+","+parseInt(ovalue[0].value)+","+parseInt(ovalue[0].value)+")"
+			for (var i=0;i<obtn.length;i++) {
+				if (i%2==0) {
+				obtn[i].onclick=function  () {
+					this.nextElementSibling.value-=10;
+					if (this.nextElementSibling.value<0) {
+						this.nextElementSibling.value=0
+					}
+					ggg();
+					console.log(this)
+				}
+				} else{
+				obtn[i].onclick=function  () {
+					this.previousElementSibling.value=parseInt(this.previousElementSibling.value)+10;
+					if (this.previousElementSibling.value>255) {
+						this.previousElementSibling.value=255
+					}
+					ggg();
+				}
+				}
+				
+			}
+			obtn[6].onclick=function(){
+				odiv.style.background="rgb("+parseInt(ovalue[0].value)+","+parseInt(ovalue[1].value)+","+parseInt(ovalue[2].value)+")"
+			}
+			
+			function ggg () {
+				odiv.style.background="rgb("+parseInt(ovalue[0].value)+","+parseInt(ovalue[1].value)+","+parseInt(ovalue[2].value)+")"
+			}
+
+		
+	</script>
+</html>

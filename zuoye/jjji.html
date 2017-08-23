@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+	<style>
+    .has-error {
+      display: block;
+    }
+    span {
+      display: none;
+    }
+  	</style>
+	</head>
+	<body>
+  	<form action=""> 密码：<input type="password" placeholder="请输入密码" id="password">
+    <span id="error-message" class="">密码长度为6-18位</span>
+  	</form>
+  	<script>
+  		var str='a b c';
+  		console.log(str.split(""));
+  		console.log(str.split(/\s+/));
+  		
+  		var str = 'abcde';
+  		console.log(str.search('cd'));
+  		console.log(str.indexOf('cd'));
+  		console.log(str.search(/cd/));
+  		
+  		var property='borderTopWidth';
+  		console.log(property.replace(/[A-Z]/g,function(match){
+  			return '-' + match.toLowerCase();
+  		}))
+  		
+  		var property='border-top-width';
+  		console.log(property.replace(/-([a-z])/g,function(match,a1){
+  			return a1.toUpperCase();
+  		}))
+	</script>
+</html>
